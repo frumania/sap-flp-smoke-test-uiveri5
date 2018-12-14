@@ -35,6 +35,8 @@ var xmljob = fs.readFileSync('job.xml').toString();
 var xmlnested = fs.readFileSync('view_nested.xml').toString();
 var xmldashboard = fs.readFileSync('view_dashboard.xml').toString();
 
+var filePath = path.join(__dirname, '../'+directoryPath);
+
 var JenkinsJob = function() 
 {
     this.xml_concat = "";
@@ -57,9 +59,6 @@ var JenkinsJob = function()
 
         console.log('INFO Start processing...');
 
-        var filePath = path.join(__dirname, '../'+directoryPath);
-
-        //TODO ADD PATH
         console.log('INFO Scan Directory...'+filePath);
 
         fs.readdir(filePath, function (err, files) {
@@ -96,7 +95,7 @@ var JenkinsJob = function()
     {
         var that = this;
 
-        var csvFilePath = directoryPath+file;
+        var csvFilePath = filePath+file;
 
         csv().fromFile(csvFilePath).then((testset)=>{
 
