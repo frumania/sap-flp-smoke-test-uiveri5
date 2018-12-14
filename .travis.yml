@@ -1,0 +1,25 @@
+language: node_js
+node_js:
+  - "8"
+
+services:
+  - docker
+
+install:
+  - docker run -d -v /var/run/docker.sock:/var/run/docker.sock -v jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 docker-jenkins-preconf:latest
+ 
+#before_script:
+#  - npm install
+
+script:
+  - docker ps
+  - sleep 30
+  - docker ps
+  - cd scriptCreateJenkinsJobs
+  - npm install
+  - node index.js -input "../test/" -start 1 -user "$user" -password "$password"
+  - cd ..
+  - sleep 120
+  - cd test
+  - npm install
+  - node index.js

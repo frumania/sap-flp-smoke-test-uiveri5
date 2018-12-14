@@ -1,0 +1,19 @@
+{
+  "name": "sap-flp-smoke-test-uiveri5-test",
+  "version": "0.0.0",
+  "author": "Marcel Törpe",
+  "license": {
+    "type": "Apache-2.0",
+    "url": "http://opensource.org/licenses/apache2.0.php"
+  },
+  "contributors": [
+    {}
+  ],
+  "dependencies": {
+    "jenkins": "^0.23.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=0.8.0"
+  }
+}

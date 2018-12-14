@@ -1,0 +1,21 @@
+{
+  "name": "uiveri5-flptester-jenkins",
+  "version": "0.0.0",
+  "author": "SAP SE",
+  "license": {
+    "type": "Apache-2.0",
+    "url": "http://opensource.org/licenses/apache2.0.php"
+  },
+  "contributors": [
+    {}
+  ],
+  "dependencies": {
+    "csvtojson": "^2.0.8",
+    "jenkins": "^0.23.0",
+    "minimist": "^1.2.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=0.8.0"
+  }
+}

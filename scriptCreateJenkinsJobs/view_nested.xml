@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hudson.plugins.nested__view.NestedView plugin="nested-view@1.17">
+  <owner class="hudson.model.Hudson" ignore="true"/>
+  <name>ALL_USERS</name>
+  <filterExecutors>false</filterExecutors>
+  <filterQueue>false</filterQueue>
+  <properties class="hudson.model.View$PropertyList"/>
+  <views>###VIEWS###</views>
+  <columns>
+    <columns>
+      <hudson.views.WeatherColumn/>
+      <hudson.views.StatusColumn/>
+    </columns>
+  </columns>
+</hudson.plugins.nested__view.NestedView>
