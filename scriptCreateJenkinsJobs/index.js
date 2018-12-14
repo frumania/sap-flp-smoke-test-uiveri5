@@ -1,4 +1,5 @@
 var fs = require('fs');
+var path = require('path');
 var csv = require('csvtojson');
 var argv = require('minimist')(process.argv.slice(2));
 
@@ -56,14 +57,19 @@ var JenkinsJob = function()
 
         console.log('INFO Start processing...');
 
-        fs.readdir(directoryPath, function (err, files) {
+        var filePath = path.join(__dirname, '../'+directoryPath);
+
+        //TODO ADD PATH
+        console.log('INFO Scan Directory...'+filePath);
+
+        fs.readdir(filePath, function (err, files) {
             //handling error
             if (err) {
                 console.error('ERROR Unable to scan directory: ' + err);
             }
             
             if (files.length == 0) {
-                console.warn('WARN No .csv files found in <' + directoryPath + '>!');
+                console.warn('WARN No .csv files found in <' + filePath + '>!');
                 console.log('INFO Abort!');
             }
 
