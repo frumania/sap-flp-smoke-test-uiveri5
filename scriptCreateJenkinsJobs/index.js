@@ -59,7 +59,7 @@ var JenkinsJob = function()
         fs.readdir(directoryPath, function (err, files) {
             //handling error
             if (err) {
-                return console.error('ERROR Unable to scan directory: ' + err);
+                console.error('ERROR Unable to scan directory: ' + err);
             } 
 
             files.forEach(function (file) {

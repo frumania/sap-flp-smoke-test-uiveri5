@@ -19,7 +19,7 @@ script:
   - npm install
   - node index.js --input "../test/" --start 1 --user "$user" --password "$password"
   - cd ..
-  - sleep 120
+  - sleep 60
   - cd test
   - npm install
   - node index.js

@@ -15,8 +15,10 @@ jenkins.info(function(err, data) {
 
 jenkins.job.list(function(err, data) {
     if (err) throw err;
+
+    if (data.length == 0) throw "No jobs found!";
   
-    console.log('jobs', data);
+    console.log('Jobs', data);
 
     for (let index = 0; index < data.length; index++) {
         const job = data[index];
@@ -25,7 +27,7 @@ jenkins.job.list(function(err, data) {
             if (err) throw err;
         
             //TODO GET BUILD STATUS
-            console.log('job', data);
+            console.log('Job', data);
         });
 
     }
