@@ -17,7 +17,7 @@ script:
   - docker ps
   - cd scriptCreateJenkinsJobs
   - npm install
-  - node index.js --input "../test/" --start 1 --user "$user" --password "$password"
+  - node index.js --input '../test/' --start 1 --user '$user' --password '$password' --v
   - cd ..
   - sleep 60
   - cd test

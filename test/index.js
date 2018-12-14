@@ -16,7 +16,7 @@ jenkins.info(function(err, data) {
 jenkins.job.list(function(err, data) {
     if (err) throw err;
 
-    if (data.length == 0) throw "No jobs found!";
+    if (data.length == 0) throw "ERROR No jobs found!";
   
     console.log('Jobs', data);
 

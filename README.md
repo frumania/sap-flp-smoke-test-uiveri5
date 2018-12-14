@@ -18,9 +18,7 @@ First time only
 
 > docker ps
 
-> docker stop <\ContainerID\>
-
-> docker start <\ContainerID\>
+see also ...
 
 Step 2) Prepare Docker Slave Image for Jenkins
 
@@ -30,11 +28,11 @@ Step 2) Prepare Docker Slave Image for Jenkins
 
 Step 3) Generate Test Set
 
-see scriptGetIntents
+see scriptGetIntents -> README.md
 
 Step 4) Create Jenkins Jobs
 
-see scriptCreateJenkinsJobs
+see scriptCreateJenkinsJobs -> README.md
 
 Step 5) Access Jenkins via browser
 

@@ -60,7 +60,12 @@ var JenkinsJob = function()
             //handling error
             if (err) {
                 console.error('ERROR Unable to scan directory: ' + err);
-            } 
+            }
+            
+            if (files.length == 0) {
+                console.warn('WARN No .csv files found in <' + directoryPath + '>!');
+                console.log('INFO Abort!');
+            }
 
             files.forEach(function (file) {
                 
