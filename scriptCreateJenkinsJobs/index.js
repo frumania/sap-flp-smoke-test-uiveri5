@@ -136,6 +136,8 @@ var JenkinsJob = function()
                     specs: testSpec
                 };
 
+                console.log(config);
+
                 that.createJob(counter, test, config);
                 counter++;
             })

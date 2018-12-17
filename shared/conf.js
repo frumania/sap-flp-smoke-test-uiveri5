@@ -73,17 +73,17 @@ exports.config = {
 		platformName: 'linux'
 	}],
 	profile : 'integration',		
-	baseUrl : 'https://ccf-715.wdf.sap.corp/sap/bc/ui5_ui5/ui2/ushell/shells/abap/FioriLaunchpad.html?sap-client=715&sap-language=EN',
+	baseUrl : 'https://host.com/sap/bc/ui5_ui5/ui2/ushell/shells/abap/FioriLaunchpad.html?sap-client=000&sap-language=EN',
 	pageLoading: {
 		wait: '20000',
 		initialReload: false
 	},	
-	auth: {
+	/*auth: {
 		'fiori-form': {
-			user: "CASH_MANAGER",
-			pass: "Welcome1!"
+			user: "CASH",
+			pass: "123"
 		}
-	},	
+	},*/	
 	timeouts : {
 		getPageTimeout : '60000',
 		allScriptsTimeout : '70000',
