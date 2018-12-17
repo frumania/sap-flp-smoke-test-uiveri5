@@ -7,14 +7,14 @@ if(argv.v)
 {console.debug(argv);}
 
 /****START SETTINGS****/
-var directoryPath = argv.intent || '../results/intents/';
-var forcestart = argv.start || false;
-var forcecreate = argv.create || true; //TODO
-var forcedelete = argv.delete || true; //TODO
-var jenkins_user = argv.jenkinsUser || "SAP";
-var jenkins_password = argv.jenkinsPassword || "SAP";
-var gitUrl = argv.gitUrl || "https://github.com/frumania/sap-flp-smoke-test-uiveri5"; //"https://github.wdf.sap.corp/D055675/uiveri5-utils";
-var jenkinsUrl = argv.jenkinsUrl || "localhost:8080";
+var directoryPath = typeof argv.intent !== 'undefined' ? argv.intent : 'results/intents/';
+var forcestart = typeof argv.start !== 'undefined' ? argv.start : false;
+var forcecreate = typeof argv.create !== 'undefined' ? argv.create : true; //TODO
+var forcedelete = typeof argv.delete !== 'undefined' ? argv.delete : true; //TODO
+var jenkins_user = typeof argv.jenkinsUser !== 'undefined' ? argv.jenkinsUser : "SAP";
+var jenkins_password = typeof argv.jenkinsPassword !== 'undefined' ? argv.jenkinsPassword : "SAP";
+var gitUrl = typeof argv.gitUrl !== 'undefined' ? argv.gitUrl : "https://github.com/frumania/sap-flp-smoke-test-uiveri5"; //"https://github.wdf.sap.corp/D055675/uiveri5-utils";
+var jenkinsUrl = typeof argv.jenkinsUrl !== 'undefined' ? argv.jenkinsUrl : "localhost:8080";
 var baseUrl = 'http://'+jenkins_user+':'+jenkins_password+'@'+jenkinsUrl;
 /****END SETTINGS****/
 
@@ -65,11 +65,6 @@ var JenkinsJob = function()
             //handling error
             if (err) {
                 console.error('ERROR Unable to scan directory: ' + err);
-            }
-            
-            if (files.length == 0) {
-                console.warn('WARN No .csv files found in <' + filePath + '>!');
-                console.log('INFO Abort!');
             }
 
             files.forEach(function (file) {
@@ -123,11 +118,15 @@ var JenkinsJob = function()
                 {encoded_intent = encoded_intent.substring(0, encoded_intent.indexOf('?'));}
                 test.encoded_intent = encoded_intent;
 
+                //OVERRIDE (Used by Travis CI only)
+                var ov_user = typeof argv.user !== 'undefined' ? argv.user : test.user;
+                var ov_pw = typeof argv.password !== 'undefined' ? argv.password : test.password;
+
                 var config = {
                     auth: {
                         'fiori-form': {
-                        user: argv.user || test.user,
-                        pass: argv.password || test.password
+                        user: ov_user,
+                        pass: ov_pw
                         }
                     },
                     baseUrl: test.baseUrl,
