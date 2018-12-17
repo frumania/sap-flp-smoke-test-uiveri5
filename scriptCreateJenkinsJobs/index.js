@@ -7,7 +7,7 @@ if(argv.v)
 {console.debug(argv);}
 
 /****START SETTINGS****/
-var directoryPath = typeof argv.intent !== 'undefined' ? argv.intent : 'results/intents/';
+var directoryPath = typeof argv.input !== 'undefined' ? argv.input : 'results/intents/';
 var forcestart = typeof argv.start !== 'undefined' ? argv.start : false;
 var forcecreate = typeof argv.create !== 'undefined' ? argv.create : true; //TODO
 var forcedelete = typeof argv.delete !== 'undefined' ? argv.delete : true; //TODO
