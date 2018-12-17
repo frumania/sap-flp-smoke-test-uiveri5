@@ -1,4 +1,4 @@
-# Create Jenkins Job
+# Create Jenkins Jobs
 
 ### Purpose
 
@@ -7,7 +7,7 @@ e.g.
 > "MYUSER", "MYPASSWORD", ..., "#Customer-analyzeDoubtfulAccountsAllowance"  
 > ...
 
-**Output:** Creates preconfigured jobs for SAP Fiori launchpad smoke testing  
+**Output:** Creates preconfigured jobs for SAP Fiori launchpad smoke testing with uiveri5  
 e.g.  
 > Job "01-MYUSER-Customer-analyzeDoubtfulAccountsAllowance"  
 > ...
@@ -71,7 +71,7 @@ Delete/Purge Jobs
 --delete true
 ```
 
-Replace GIT repository URL used during uiveri5 smoke tests  
+Specifies GIT source repository URL for uiveri5 smoke tests  
 ```bash 
 --gitUrl "https://github.com/frumania/sap-flp-smoke-test-uiveri5"
 ```
@@ -81,7 +81,7 @@ Specify Authentication Type (ABAP/On Premise = "fiori-form"; SAP Cloud Platform 
 --auth "fiori-form"
 ```
 
-Increase Log Level  
+Toggle Verbosity
 ```bash 
 --v
 ```
