@@ -4,12 +4,12 @@
 
 Processes csv input file and resolves all SAP Fiori launchpad intents (tile / target mapping) for a given user.
 
-**Input:** user.csv  
+**Input:** "user.csv"   
 e.g.  
 > "MYUSER", "MYPASSWORD"
 > ...
 
-**Output:** intents_MYUSER.csv  
+**Output:** "intents_MYUSER.csv", ...    
 e.g.  
 > "MYUSER", "MYPASSWORD", ..., "#Customer-analyzeDoubtfulAccountsAllowance"  
 > ...
@@ -18,7 +18,7 @@ e.g.
 
 * SAP Netweaver ABAP >= 7.51
 * SAP Fiori launchpad frontend server
-* "user.csv" maintained
+* ["user.csv"](https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/user.csv) maintained
 
 ### Installation
 

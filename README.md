@@ -1,4 +1,4 @@
-# uiveri5-flptester
+# SAP Fiori launchpad smoke testing tool based on uiveri5
 
 [![Build Status](https://travis-ci.org/frumania/sap-flp-smoke-test-uiveri5.svg?branch=master)](https://travis-ci.org/frumania/sap-flp-smoke-test-uiveri5)
 
@@ -6,8 +6,18 @@
 
 * NodeJS >= 8.X
 * Docker >= 17.x
+* GIT
 
 ### Quick Guide
+
+#### Step 0) Download / Clone Repository
+
+In terminal, create a local copy by executing  
+```bash
+$ git clone https://github.com/frumania/sap-flp-smoke-test-uiveri5
+```
+
+You can also follow this [guide](https://help.github.com/articles/cloning-a-repository/).
 
 #### Step 1) Create / Run Docker Image for Jenkins
 
@@ -37,11 +47,37 @@ Find out more -> [README.md](https://github.com/frumania/docker-uiveri5-jenkins-
 
 #### Step 3) Generate Test Set
 
-Maintain file <user.csv>
+Maintain file ["user.csv"](https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/user.csv)
+
+```bash
+$ cd scriptGetIntents
+```
+
+First time only
+```bash
+$ npm install
+```
+
+```bash
+$ node index.js --url "https://HOST:PORT"
+```
 
 Find out more -> [README.md](https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/scriptGetIntents/README.md)
 
 #### Step 4) Create Jenkins Jobs
+
+```bash
+$ cd scriptCreateJenkinsJobs
+```
+
+First time only
+```bash
+$ npm install
+```
+
+```bash
+$ node index.js
+```
 
 Find out more -> [README.md](https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/scriptCreateJenkinsJobs/README.md)
 

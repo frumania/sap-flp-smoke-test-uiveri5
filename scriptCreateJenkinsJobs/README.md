@@ -2,9 +2,9 @@
 
 ### Purpose
 
-Script maintains jenkins jobs for a given url, intent, user, password combination each, that can execute predefined uiveri5 smoke tests.
+Script maintains jenkins jobs for a given url, intent, user and password combination each, so that predefined uiveri5 smoke tests can be scheduled and executed. Logs/Results are being collected.
 
-**Input:** intents*.csv  
+**Input:** "intents*.csv"  
 e.g.  
 > "MYUSER", "MYPASSWORD", ..., "#Customer-analyzeDoubtfulAccountsAllowance"  
 > ...
@@ -71,50 +71,50 @@ $ node index.js --input "../results/intents/" --jenkinsUrl "localhost:8080" --je
 
 Specifies source directory for .csv files
 ```bash 
---input "../results/intents/"
+$ --input "../results/intents/"
 ```
 
 Specifies URL/host+port for jenkins server  
 ```bash 
---jenkinsUrl "localhost:8080"
+$ --jenkinsUrl "localhost:8080"
 ```
 
 Specifies default user for jenkins server  
 ```bash 
---jenkinsUser "SAP"
+$ --jenkinsUser "SAP"
 ```
 
 Specifies default password for jenkins server  
 ```bash 
---jenkinsPassword "SAP"
+$ --jenkinsPassword "SAP"
 ```
 
 Trigger builds directly after creation  
 ```bash 
---start false
+$ --start false
 ```
 
 Create Jobs  
-```bash 
---create true
+```bash
+$ --create true
 ```
 
 Delete/Purge Jobs   
 ```bash 
---delete true
+$ --delete true
 ```
 
 Specifies GIT source repository URL for uiveri5 smoke tests  
 ```bash 
---gitUrl "https://github.com/frumania/sap-flp-smoke-test-uiveri5"
+$ --gitUrl "https://github.com/frumania/sap-flp-smoke-test-uiveri5"
 ```
 
 Specify Authentication Type (ABAP/On Premise = "fiori-form"; SAP Cloud Platform = "sapcloud-form")  
 ```bash 
---auth "fiori-form"
+$ --auth "fiori-form"
 ```
 
 Toggle Verbosity
 ```bash 
---v
+$ --v
 ```
