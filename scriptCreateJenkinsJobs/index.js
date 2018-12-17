@@ -126,7 +126,7 @@ var JenkinsJob = function()
 
                 var config = {
                     auth: {
-                        authType: {
+                        [authType]: {
                         user: ov_user,
                         pass: ov_pw
                         }
@@ -135,8 +135,6 @@ var JenkinsJob = function()
                     intent: test.appid,
                     specs: testSpec
                 };
-
-                console.log(config);
 
                 that.createJob(counter, test, config);
                 counter++;
