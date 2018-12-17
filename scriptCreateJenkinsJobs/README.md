@@ -24,7 +24,7 @@ $ npm install
 
 ### Run
 
-As is 
+As is (defaults apply)
 ```bash  
 $ node index.js
 ```
@@ -38,47 +38,47 @@ $ node index.js --input "../results/intents/" --jenkinsUrl "localhost:8080" --je
 
 Specifies source directory for .csv files
 ```bash 
---input **"../results/intents/"**
+--input "../results/intents/"
 ```
 
 Specifies URL/host+port for jenkins server  
 ```bash 
---jenkinsUrl **"localhost:8080"**
+--jenkinsUrl "localhost:8080"
 ```
 
 Specifies default user for jenkins server  
 ```bash 
---jenkinsUser **"SAP"**
+--jenkinsUser "SAP"
 ```
 
 Specifies default password for jenkins server  
 ```bash 
---jenkinsPassword **"SAP"**
+--jenkinsPassword "SAP"
 ```
 
 Trigger builds directly after creation  
 ```bash 
---start **false**
+--start false
 ```
 
 Create Jobs  
 ```bash 
---create **true**
+--create true
 ```
 
 Delete/Purge Jobs   
 ```bash 
---delete **true**
+--delete true
 ```
 
 Replace GIT repository URL used during uiveri5 smoke tests  
 ```bash 
---gitUrl **https://github.com/frumania/sap-flp-smoke-test-uiveri5**
+--gitUrl "https://github.com/frumania/sap-flp-smoke-test-uiveri5"
 ```
 
 Specify Authentication Type (ABAP/On Premise = "fiori-form"; SAP Cloud Platform = "sapcloud-form")  
 ```bash 
---auth **"fiori-form"**
+--auth "fiori-form"
 ```
 
 Increase Log Level  

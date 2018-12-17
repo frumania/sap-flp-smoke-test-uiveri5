@@ -14,9 +14,13 @@ Step 1) Create / Run Docker Image for Jenkins
 [DockerHub Jenkins Preconfigured](https://hub.docker.com/r/frumania/docker-jenkins-preconf/)
 
 First time only
-> $ docker run -d -v /var/run/docker.sock:/var/run/docker.sock -v jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 frumania/docker-jenkins-preconf:latest
+```bash
+$ docker run -d -v /var/run/docker.sock:/var/run/docker.sock -v jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 frumania/docker-jenkins-preconf:latest
+```
 
-> $ docker ps
+```bash
+$ docker ps
+```
 
 see also [README.md](https://github.com/frumania/docker-jenkins-preconf/blob/master/README.md)
 
