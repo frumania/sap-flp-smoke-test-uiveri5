@@ -4,6 +4,20 @@
 
 Processes csv input file and resolves all SAP Fiori launchpad intents (tile / target mapping) for a given user.
 
+**Input:** user.csv  
+e.g.  
+> "MYUSER", "MYPASSWORD"
+> ...
+
+**Output:** ... 
+e.g.  
+> "MYUSER", "MYPASSWORD", ..., "#Customer-analyzeDoubtfulAccountsAllowance"  
+> ...
+
+### Requirements
+
+SAP Fiori launchpad frontend server, NW ABAP >= 7.51
+
 ### Installation
 
 Execute in terminal/cmd
@@ -20,14 +34,14 @@ Execute in terminal/cmd
 
 ### Parameters
 
-url
+--url
 
-sap-client
+--sap-client
 
-input
+--input
 
-output
+--output
 
-addShellHome
+--addShellHome
 
-v
+--v
