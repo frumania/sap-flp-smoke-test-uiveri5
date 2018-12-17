@@ -19,6 +19,7 @@ $ git clone https://github.com/frumania/sap-flp-smoke-test-uiveri5
 
 You can also follow this [guide](https://help.github.com/articles/cloning-a-repository/).
 
+
 #### Step 1) Create / Run Docker Image for Jenkins
 
 [DockerHub Jenkins Preconfigured](https://hub.docker.com/r/frumania/docker-jenkins-preconf/)
@@ -35,6 +36,7 @@ $ docker ps
 
 Find out more -> [README.md](https://github.com/frumania/docker-jenkins-preconf/blob/master/README.md)
 
+
 #### Step 2) Prepare Docker Slave Image for Jenkins
 
 [DockerHub Jenkins Uiveri5 Slave](https://hub.docker.com/r/frumania/uiveri5-base/)
@@ -45,27 +47,32 @@ $ docker pull frumania/uiveri5-base:latest
 
 Find out more -> [README.md](https://github.com/frumania/docker-uiveri5-jenkins-slave/blob/master/README.md)
 
+
 #### Step 3) Generate Test Set
 
 Maintain file ["user.csv"](https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/user.csv)
 
+Switch Directory  
 ```bash
 $ cd scriptGetIntents
 ```
 
-First time only
+First time only  
 ```bash
 $ npm install
 ```
 
+Run  
 ```bash
 $ node index.js --url "https://HOST:PORT"
 ```
 
 Find out more -> [README.md](https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/scriptGetIntents/README.md)
 
+
 #### Step 4) Create Jenkins Jobs
 
+Switch Directory  
 ```bash
 $ cd scriptCreateJenkinsJobs
 ```
@@ -75,11 +82,13 @@ First time only
 $ npm install
 ```
 
+Run  
 ```bash
 $ node index.js
 ```
 
 Find out more -> [README.md](https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/scriptCreateJenkinsJobs/README.md)
+
 
 #### Step 5) Access Jenkins via browser
 
