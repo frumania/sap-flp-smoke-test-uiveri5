@@ -16,6 +16,7 @@ var jenkins_password = typeof argv.jenkinsPassword !== 'undefined' ? argv.jenkin
 var gitUrl = typeof argv.gitUrl !== 'undefined' ? argv.gitUrl : "https://github.com/frumania/sap-flp-smoke-test-uiveri5"; //"https://github.wdf.sap.corp/D055675/uiveri5-utils";
 var jenkinsUrl = typeof argv.jenkinsUrl !== 'undefined' ? argv.jenkinsUrl : "localhost:8080";
 var baseUrl = 'http://'+jenkins_user+':'+jenkins_password+'@'+jenkinsUrl;
+var authType = typeof argv.auth !== 'undefined' ? argv.auth : 'fiori-form'; //sapcloud-form
 /****END SETTINGS****/
 
 console.log("Input: "+directoryPath+"*.csv");
@@ -24,6 +25,7 @@ console.log("Create: "+forcecreate);
 console.log("Delete: "+forcedelete);
 console.log("GitUrl: "+gitUrl);
 console.log("JenkinsUrl: "+baseUrl);
+console.log("AuthType: "+authType);
 
 /* Doc https://github.com/silas/node-jenkins#readme */
 var jenkins = require('jenkins')({ baseUrl: baseUrl, crumbIssuer: true });
@@ -124,7 +126,7 @@ var JenkinsJob = function()
 
                 var config = {
                     auth: {
-                        'fiori-form': {
+                        authType: {
                         user: ov_user,
                         pass: ov_pw
                         }

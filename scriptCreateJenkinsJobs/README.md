@@ -15,7 +15,7 @@ Output: Creates preconfigured jobs for SAP Fiori launchpad smoke testing
 
 > node index.js
 
-> node index.js --input "../results/intents/" --jenkinsUrl "localhost:8080" --jenkinsUser "SAP" --jenkinsPassword "SAP" --gitUrl "https://github.com/frumania/sap-flp-smoke-test-uiveri5" --delete false --create false --start true --v
+> node index.js --input "../results/intents/" --jenkinsUrl "localhost:8080" --jenkinsUser "SAP" --jenkinsPassword "SAP" --gitUrl "https://github.com/frumania/sap-flp-smoke-test-uiveri5" --delete false --auth "sapcloud-form" --create false --start true --v
 
 ### Parameters
 
@@ -34,5 +34,7 @@ Output: Creates preconfigured jobs for SAP Fiori launchpad smoke testing
 --delete true
 
 --gitUrl https://github.com/frumania/sap-flp-smoke-test-uiveri5
+
+--auth "fiori-form" / "sapcloud-form"
 
 --v

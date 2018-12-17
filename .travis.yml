@@ -17,9 +17,17 @@ script:
   - docker ps
   - cd scriptCreateJenkinsJobs
   - npm install
-  - node index.js --input "/test/" --start true --user $user --password $password --v
+  - node index.js --input "/test/" --auth "sapcloud-form" --start true --user $user --password $password --v
   - cd ..
   - sleep 60
   - cd test
   - npm install
+  - node index.js
+  - sleep 60
+  - node index.js
+  - sleep 60
+  - node index.js
+  - sleep 60
+  - node index.js
+  - sleep 60
   - node index.js
