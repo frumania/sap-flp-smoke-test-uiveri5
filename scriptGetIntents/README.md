@@ -9,39 +9,74 @@ e.g.
 > "MYUSER", "MYPASSWORD"
 > ...
 
-**Output:** ... 
+**Output:** intents_MYUSER.csv  
 e.g.  
 > "MYUSER", "MYPASSWORD", ..., "#Customer-analyzeDoubtfulAccountsAllowance"  
 > ...
 
 ### Requirements
 
-SAP Fiori launchpad frontend server, NW ABAP >= 7.51
+* SAP Netweaver ABAP >= 7.51
+* SAP Fiori launchpad frontend server
 
 ### Installation
 
 Execute in terminal/cmd
 
-> cd scriptGetIntents
+```bash
+$ cd scriptGetIntents
+```
 
-> npm install
+```bash
+$ npm install
+```
 
 ### Run
 
-> node.index.js -url "https://52.201.167.55:8001"
+As is (defaults apply)  
+```bash
+$ node index.js -url "https://52.201.167.55:8001"
+```
 
-> node index.js -url "https://52.201.167.55:8001" -sap-client "000" -input "../user.csv" -output "../results/intents/" -addShellHome 1 -v
+With Parameters  
+```bash
+$ node index.js -url "https://52.201.167.55:8001" -suffix "?sap-language=EN&sap-client=000" -input "../user.csv" -output "../results/intents/" -addShellHome true -v
+```
+
+### Logging
+
+> combined.log
+
+> error.log
 
 ### Parameters
 
---url
+Specifies SAP system url/host
+```bash
+$ --url "https://HOST:PORT"
+```
 
---sap-client
+Specifies url suffix
+```bash
+$ --suffix "?sap-language=EN&sap-client=000"
+```
 
---input
+Specifies source directory for .csv user file
+```bash
+$ --input "../user.csv"
+```
 
---output
+Specifies target directory for generated intents*.csv files
+```bash
+$ --output "../results/intents/"
+```
 
---addShellHome
+Creates additional "#Shell-home" intent, which can be used to test the SAP Fiori launchpad dashboard (dynamic tiles)
+```bash
+$ --addShellHome true
+```
 
---v
+Toggle Verbosity  
+```bash
+$ --v
+```

@@ -7,7 +7,7 @@
 * NodeJS >= 8.X
 * Docker >= 17.x
 
-### Installation
+### Quick Guide
 
 #### Step 1) Create / Run Docker Image for Jenkins
 
@@ -18,6 +18,7 @@ First time only
 $ docker run -d -v /var/run/docker.sock:/var/run/docker.sock -v jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 frumania/docker-jenkins-preconf:latest
 ```
 
+Check if container is running  
 ```bash
 $ docker ps
 ```
@@ -38,16 +39,18 @@ Find out more -> [README.md](https://github.com/frumania/docker-uiveri5-jenkins-
 
 Maintain file <user.csv>
 
-see folder scriptGetIntents -> [README.md](https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/scriptGetIntents/README.md)
+Find out more -> [README.md](https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/scriptGetIntents/README.md)
 
 #### Step 4) Create Jenkins Jobs
 
-see folder scriptCreateJenkinsJobs -> [README.md](https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/scriptCreateJenkinsJobs/README.md)
+Find out more -> [README.md](https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/scriptCreateJenkinsJobs/README.md)
 
 #### Step 5) Access Jenkins via browser
 
-http://localhost:8080
+Via browser open **http://localhost:8080**
 
 > User: SAP
 
 > PW: SAP
+
+**Output Image**

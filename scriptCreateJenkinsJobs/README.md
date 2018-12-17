@@ -12,6 +12,17 @@ e.g.
 > Job "01-MYUSER-Customer-analyzeDoubtfulAccountsAllowance"  
 > ...
 
+with the following configuration:
+
+GIT Repository: 
+> https://github.com/frumania/sap-flp-smoke-test-uiveri5
+
+Label: (-> triggers Docker Cloud Controller - [Image](https://hub.docker.com/r/frumania/uiveri5-base/))
+> myslave
+
+Shell Command:
+> /opt/selenium/startSeleniumServer.sh; cd shared; visualtest --seleniumAddress http://localhost:4444/wd/hub --config '{"auth":{"sapcloud-form":{"user":"MYUSER","pass":"MYPASSWORD"}},"baseUrl":"https://...","intent":"#Customer-analyzeDoubtfulAccountsAllowance","specs":"specs/app.spec.js"}'
+
 ### Installation
 
 ```bash

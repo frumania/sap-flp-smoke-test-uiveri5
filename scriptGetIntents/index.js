@@ -1,23 +1,25 @@
 var fs = require('fs');
+var path = require('path');
 var csv = require('csvtojson');
 var abapFLP = require('./utils-abap-flp');
 var request = require('request');
 var logger = require('./logger').getLogHandler();
+var argv = require('minimist')(process.argv.slice(2));
+
+if(argv.v)
+{console.debug(argv);}
 
 /****START SETTINGS****/
-var csvFilePath = '../user.csv'; //TODO PARAM -csv
-var flpUrl = "https://52.201.167.55:8001"; //TODO PARAM -url
-var suffix = "?sap-language=EN";
-var client = "000"; //TODO PARAM
-var testLocal = false;
-var resultsFilePath = '../results/intents'; //TODO PARAM -output
-var addShellHome = true;  //TODO PARAM
-logger.level = 'debug'; //TODO PARAM -v
-if(logger.level == "silly"){require('request').debug = true;}
+var csvFilePath = typeof argv.input !== 'undefined' ? argv.input : '../user.csv';
+var resultsFilePath = typeof argv.output !== 'undefined' ? argv.output : '../results/intents/';
+var flpUrl = typeof argv.url !== 'undefined' ? argv.url : "https://52.201.167.55:8001";
+var suffix = typeof argv.suffix !== 'undefined' ? argv.suffix : "?sap-language=EN&sap-client=000";
+var addShellHome = argv.addShellHome === 'false' ? false : true;
 /****END SETTINGS****/
 
-if(client != "")
-{suffix += "&sap-client="+client;}
+var testLocal = argv.testLocal === 'true' ? true : false;
+
+if(argv.v){require('request').debug = true;}
 
 csv().fromFile(csvFilePath).then((testset)=>{
 
@@ -58,7 +60,7 @@ csv().fromFile(csvFilePath).then((testset)=>{
                 {
                     if(testLocal){body = fs.readFileSync("sample.json");}
 
-                    if(logger.level == "silly")
+                    if(argv.v)
                     {
                         const file = resultsFilePath+'/catalogservice_'+test.user+'.json';
                         fs.writeFile(file, body, function(err) {
