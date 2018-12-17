@@ -36,8 +36,8 @@ var pluginLoader = function()
 			var fileName = this.config.pluginLoader.fileName || defaultFileName;
 
 			var url = (config.baseUrl || "") + (config.intent || "");
-			var user = config.auth["fiori-form"].user || "";
-			var pw = config.auth["fiori-form"].pass || "";
+			var user = config.auth[Object.keys(config.auth)[0]].user || "";
+			var pw = config.auth[Object.keys(config.auth)[0]].pass || "";
 			var intent = config.intent || "";
 
 			var htmlfilePath = path.join(__dirname, 'pluginLoader.html');
