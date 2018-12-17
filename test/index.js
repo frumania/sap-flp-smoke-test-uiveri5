@@ -10,7 +10,7 @@ var jenkins = require('jenkins')({ baseUrl: baseUrl, crumbIssuer: true });
 jenkins.info(function(err, data) {
     if (err) throw err;
   
-    console.log('info', data);
+    console.log('INFO Jenkins Config: ', data);
 });
 
 jenkins.job.list(function(err, data) {
@@ -18,16 +18,25 @@ jenkins.job.list(function(err, data) {
 
     if (data.length == 0) throw "ERROR No jobs found!";
   
-    console.log('Jobs', data);
+    console.debug('Jobs', data);
 
     for (let index = 0; index < data.length; index++) {
         const job = data[index];
 
         jenkins.job.get(job.name, function(err, data) {
             if (err) throw err;
-        
-            //TODO GET BUILD STATUS
-            console.log('Job', data);
+
+            console.debug('Job', data);
+
+            //CHECK IF BUILT IS STABLE
+            if(data.lastStableBuild != "null" && data.lastStableBuild != null)
+            {
+                console.log("INFO Job "+job.name+" successfully built!");
+            }
+            else
+            {
+                throw "ERROR Job "+job.name+" could not be built successfully!";
+            }
         });
 
     }
