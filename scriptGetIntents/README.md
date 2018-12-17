@@ -14,10 +14,11 @@ e.g.
 > "MYUSER", "MYPASSWORD", ..., "#Customer-analyzeDoubtfulAccountsAllowance"  
 > ...
 
-### Requirements
+### Prerequisites
 
 * SAP Netweaver ABAP >= 7.51
 * SAP Fiori launchpad frontend server
+* "user.csv" maintained
 
 ### Installation
 
@@ -35,12 +36,12 @@ $ npm install
 
 As is (defaults apply)  
 ```bash
-$ node index.js -url "https://52.201.167.55:8001"
+$ node index.js --url "https://52.201.167.55:8001"
 ```
 
-With Parameters  
+With parameters  
 ```bash
-$ node index.js -url "https://52.201.167.55:8001" -suffix "?sap-language=EN&sap-client=000" -input "../user.csv" -output "../results/intents/" -addShellHome true -v
+$ node index.js --url "https://52.201.167.55:8001" --suffix "?sap-language=EN&sap-client=000" --input "../user.csv" --output "../results/intents/" --addShellHome true --v
 ```
 
 ### Logging

@@ -2,6 +2,8 @@
 
 ### Purpose
 
+Script maintains jenkins jobs for a given url, intent, user, password combination each, that can execute predefined uiveri5 smoke tests.
+
 **Input:** intents*.csv  
 e.g.  
 > "MYUSER", "MYPASSWORD", ..., "#Customer-analyzeDoubtfulAccountsAllowance"  
@@ -17,11 +19,31 @@ with the following configuration:
 GIT Repository: 
 > https://github.com/frumania/sap-flp-smoke-test-uiveri5
 
-Label: (-> triggers Docker Cloud Controller - [Image](https://hub.docker.com/r/frumania/uiveri5-base/))
+Label: (-> triggers Docker Cloud Controller [uiveri5 slave](https://hub.docker.com/r/frumania/uiveri5-base/))
 > myslave
 
-Shell Command:
-> /opt/selenium/startSeleniumServer.sh; cd shared; visualtest --seleniumAddress http://localhost:4444/wd/hub --config '{"auth":{"sapcloud-form":{"user":"MYUSER","pass":"MYPASSWORD"}},"baseUrl":"https://...","intent":"#Customer-analyzeDoubtfulAccountsAllowance","specs":"specs/app.spec.js"}'
+Shell Commands:
+```bash  
+$/opt/selenium/startSeleniumServer.sh;  
+```
+```bash
+$ cd shared;  
+```
+```bash
+$ visualtest --seleniumAddress http://localhost:4444/wd/hub --config '{"auth":{"sapcloud-form":{"user":"MYUSER","pass":"MYPASSWORD"}},"baseUrl":"https://...","intent":"#Customer-analyzeDoubtfulAccountsAllowance","specs":"specs/app.spec.js"}'
+```
+
+Further:  
+* Job: Clears Workspace
+* Job: Collects uiveri5 HTML Report
+* Job: Collects uiveri5 Console Error Plugin Output (error.json)
+* Job: Collects uiveri5 Logger Plugin Output (pluginLoader.thml)
+* Creates Nested & Dashbaord View
+
+### Prerequisites
+
+* [Configured Jenkins Server](https://hub.docker.com/r/frumania/docker-jenkins-preconf/)
+* Generated "intents*.csv" (from scriptGetIntents)
 
 ### Installation
 
