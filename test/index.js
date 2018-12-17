@@ -18,7 +18,7 @@ jenkins.job.list(function(err, data) {
 
     if (data.length == 0) throw "ERROR No jobs found!";
   
-    console.debug('Jobs', data);
+    console.debug('DEBUG Jobs', data);
 
     for (let index = 0; index < data.length; index++) {
         const job = data[index];
@@ -26,17 +26,35 @@ jenkins.job.list(function(err, data) {
         jenkins.job.get(job.name, function(err, data) {
             if (err) throw err;
 
-            console.debug('Job', data);
+            console.debug('DEBUG Job', data);
 
-            //CHECK IF BUILT IS STABLE
+            //CHECK IF BUILD IS STABLE
             if(data.lastStableBuild != "null" && data.lastStableBuild != null)
             {
                 console.log("INFO Job "+job.name+" successfully built!");
             }
             else
             {
-                throw "ERROR Job "+job.name+" could not be built successfully!";
+                if(job.name.includes("Shell"))
+                {throw "ERROR Job "+job.name+" could not be built successfully!";}
+                else
+                {console.log("INFO Job "+job.name+" could not be built successfully!");}
             }
+
+            var req = {};
+            req.path =  '/job/'+job.name+'/Console_20Errors/error.json';
+            req.params = {};
+
+            jenkins._post(
+                req,
+                "",
+                "",
+                function(err, result){
+                    console.log("DEBUG Output: ", result.body);
+                }
+            );
+
+
         });
 
     }
