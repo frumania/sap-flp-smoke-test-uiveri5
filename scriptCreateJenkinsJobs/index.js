@@ -8,9 +8,9 @@ if(argv.v)
 
 /****START SETTINGS****/
 var directoryPath = typeof argv.input !== 'undefined' ? argv.input : 'results/intents/';
-var forcestart = typeof argv.start !== 'undefined' ? argv.start : false;
-var forcecreate = typeof argv.create !== 'undefined' ? argv.create : true; //TODO
-var forcedelete = typeof argv.delete !== 'undefined' ? argv.delete : true; //TODO
+var forcestart = argv.start === 'true' ? true : false;
+var forcecreate = argv.create === 'false' ? false : true;
+var forcedelete = argv.delete === 'false' ? false : true;
 var jenkins_user = typeof argv.jenkinsUser !== 'undefined' ? argv.jenkinsUser : "SAP";
 var jenkins_password = typeof argv.jenkinsPassword !== 'undefined' ? argv.jenkinsPassword : "SAP";
 var gitUrl = typeof argv.gitUrl !== 'undefined' ? argv.gitUrl : "https://github.com/frumania/sap-flp-smoke-test-uiveri5"; //"https://github.wdf.sap.corp/D055675/uiveri5-utils";
@@ -136,7 +136,7 @@ var JenkinsJob = function()
                     specs: testSpec
                 };
 
-                that.createJob(counter, test, config);
+                that.processJob(counter, test, config);
                 counter++;
             })
 
@@ -145,12 +145,12 @@ var JenkinsJob = function()
             //IF IS LAST FILE
             if(that.total_files_count == that.file_count)
             {
-                that.createView();
+                that.processView();
             }
         });
     };
 
-    this.createJob = function(counter, test, config)
+    this.processJob = function(counter, test, config)
     {
         var that = this;
 
@@ -170,54 +170,152 @@ var JenkinsJob = function()
 
         var jobname = that.minTwoDigits(counter)+"-"+test.user+"-"+test.encoded_intent;
 
-        jenkins.job.destroy(jobname, function(err) {
-            if (err){
-                console.warn("WARN Job "+jobname+" could not be deleted!");
-            }
-            else
-            console.log("INFO Job "+jobname+" successfully deleted!");
-
-            jenkins.job.create(jobname, xmljobcontents, function(err) {
-                if (err){
-                    console.warn("WARN Job "+jobname+" could not be created!");
-                    console.log(xmljobcontents);
-                    console.log(err);
-                }
-                else
-                {
-                    console.log("INFO Job "+jobname+" successfully created!");
-
-                    //TRIGGER BUILD(S)
-                    if(forcestart)
-                    {
-                        var req = {};
-                        req.path = '/job/'+jobname+'/build';
-                        req.params = {};
-
-                        jenkins._post(
-                            req,
-                            "",
-                            "",
-                            function(err){
-                                if(err)
-                                {
-                                    console.warn("WARN Build for job "+jobname+" could not be triggered!");
-                                    console.log(err);
-                                }
-                                else
-                                {
-                                    console.log("INFO Build for job "+jobname+" successfully triggered!");
-                                }
-                            }
-                        );
-
-                    }
-
-                }
+        that.jobDelete(jobname).then(function()
+        {
+            that.jobCreate(jobname,xmljobcontents).then(function()
+            {
+                that.jobStart(jobname);
             });
-
         });
 
+    };
+
+    this.jobDelete = function(jobname){
+
+        return new Promise(function(resolve, reject) {
+            if(forcedelete)
+            {
+                jenkins.job.destroy(jobname, function(err) {
+                    if (err)
+                    {
+                        console.warn("WARN Job "+jobname+" could not be deleted!");
+                    }
+                    else
+                    {
+                        console.log("INFO Job "+jobname+" successfully deleted!");
+                    }
+                    resolve("Stuff worked!");
+                });
+            }
+            else
+            {
+                resolve("Stuff worked!");
+            }
+        });
+    }
+
+    this.jobCreate = function(jobname, xmljobcontents)
+    {
+        return new Promise(function(resolve, reject) {
+            if(forcecreate)
+            {
+                jenkins.job.create(jobname, xmljobcontents, function(err) {
+                    if (err)
+                    {
+                        console.warn("WARN Job "+jobname+" could not be created!");
+                        console.log(xmljobcontents);
+                        console.log(err);
+                    }
+                    else
+                    {
+                        console.log("INFO Job "+jobname+" successfully created!");
+                    }
+                    resolve("Stuff worked!");
+                });
+            }
+            else
+            {
+                resolve("Stuff worked!");
+            }
+        });
+    };
+
+    this.jobStart = function(jobname)
+    {
+        if(forcestart)
+        {
+            var req = {};
+            req.path = '/job/'+jobname+'/build';
+            req.params = {};
+
+            jenkins._post(
+                req,
+                "",
+                "",
+                function(err)
+                {
+                    if(err)
+                    {
+                        console.warn("WARN Build for job "+jobname+" could not be triggered!");
+                        console.log(err);
+                    }
+                    else
+                    {
+                        console.log("INFO Build for job "+jobname+" successfully triggered!");
+                    }
+                }
+            );
+        }
+    };
+
+    this.viewCreate = function(viewname)
+    {
+        return new Promise(function(resolve, reject) {
+            if(forcecreate)
+            {
+                jenkins.view.create(viewname, 'hudson.plugins.nested_view.NestedView', function(err) {
+                    if (err)
+                    {console.warn("WARN View "+viewname+" could not be created!");}
+                    else
+                    {console.log("INFO View "+viewname+" successfully created!");}
+                    resolve("Stuff worked!");
+                });
+            }
+            else
+            {
+                resolve("Stuff worked!");
+            }
+        });
+    };
+
+    this.viewUpdate = function(viewname,xmlnestedcontents){
+
+        return new Promise(function(resolve, reject) {
+            if(forcecreate)
+            {
+                jenkins.view.config(viewname, xmlnestedcontents, function(err) {
+                    if (err)
+                    {console.warn("WARN View "+viewname+" could not be reconfigured!");}
+                    else
+                    {console.log("INFO View "+viewname+" successfully reconfigured!");}
+                    resolve("Stuff worked!");
+                });
+            }
+            else
+            {
+                resolve("Stuff worked!");
+            }
+        });
+    };
+
+    this.viewDelete = function(viewname)
+    {
+        return new Promise(function(resolve, reject) {
+            if(forcedelete)
+            {
+                jenkins.view.destroy(viewname, function(err) {
+                    if (err)
+                    {console.warn("WARN View "+viewname+" could not be deleted!");}
+                    else
+                    {console.log("INFO View "+viewname+" successfully deleted!");}
+                    resolve("Stuff worked!");
+                });
+            }
+            else
+            {
+                resolve("Stuff worked!");
+            }
+        });
     };
 
     this.prepareView = function(user)
@@ -228,33 +326,23 @@ var JenkinsJob = function()
         this.xml_concat += xmldashboardcontents;
     };
 
-    this.createView = function()
+    this.processView = function()
     {
         var that = this;
 
         var xmlnestedcontentsraw = xmlnested.slice(0);
         var xmlnestedcontents = xmlnestedcontentsraw.replace("###VIEWS###", this.xml_concat);
 
-        console.log("INFO Creating Nested and Dashboard Views");
+        console.log("INFO Creating Nested and Dashboard Views...");
         //console.debug(xmlnestedcontents);
 
-        jenkins.view.destroy(viewname, function(err) {
-            if (err)
-            {console.warn("WARN View "+viewname+" could not be deleted!");}
-            else
-            {console.log("INFO View "+viewname+" successfully deleted!");}
-
-            jenkins.view.create(viewname, 'hudson.plugins.nested_view.NestedView', function(err) {
-                if (err)
-                {console.warn("WARN View "+viewname+" could not be created!");}
-                else
-                {console.log("INFO View "+viewname+" successfully created!");}
-
-                jenkins.view.config(viewname, xmlnestedcontents, function(err) {
-                    if (err)
-                    {console.warn("WARN View "+viewname+" could not be reconfigured!");}
-                    else
-                    {console.log("INFO View "+viewname+" successfully reconfigured!");}
+        that.viewDelete(viewname).then(function()
+        {
+            that.viewCreate(viewname).then(function()
+            {
+                that.viewUpdate(viewname, xmlnestedcontents).then(function()
+                {
+                    console.log("INFO All done!");
                 });
             });
         });
@@ -269,21 +357,3 @@ var myjenkinsjob = new JenkinsJob();
 myjenkinsjob.start();
 
 module.exports = new JenkinsJob();
-
-/*jenkins.job.config('01-T124_BU-Procurement-displayOverviewPage', function(err, data) {
-    if (err) throw err;
-
-    console.log('xml', data);
-});*/
-
-/*jenkins.view.list(function(err, data) {
-    if (err) throw err;
-
-    console.log('views', data);
-});*/
-
-/*jenkins.view.config('ALL_USERS', function(err, data) {
-    if (err) throw err;
-
-    console.log('xml', data);
-});*/

@@ -14,11 +14,11 @@ Step 1) Create / Run Docker Image for Jenkins
 [DockerHub Jenkins Preconfigured](https://hub.docker.com/r/frumania/docker-jenkins-preconf/)
 
 First time only
-> docker run -d -v /var/run/docker.sock:/var/run/docker.sock -v jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 frumania/docker-jenkins-preconf:latest
+> $ docker run -d -v /var/run/docker.sock:/var/run/docker.sock -v jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 frumania/docker-jenkins-preconf:latest
 
-> docker ps
+> $ docker ps
 
-see also ...
+see also [README.md](https://github.com/frumania/docker-jenkins-preconf/blob/master/README.md)
 
 Step 2) Prepare Docker Slave Image for Jenkins
 
@@ -28,11 +28,13 @@ Step 2) Prepare Docker Slave Image for Jenkins
 
 Step 3) Generate Test Set
 
-see scriptGetIntents -> README.md
+Maintain file <user.csv>
+
+see folder scriptGetIntents -> [README.md](https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/scriptGetIntents/README.md)
 
 Step 4) Create Jenkins Jobs
 
-see scriptCreateJenkinsJobs -> README.md
+see folder scriptCreateJenkinsJobs -> [README.md](https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/scriptCreateJenkinsJobs/README.md)
 
 Step 5) Access Jenkins via browser
 

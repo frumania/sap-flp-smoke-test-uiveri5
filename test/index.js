@@ -50,7 +50,7 @@ jenkins.job.list(function(err, data) {
                 "",
                 "",
                 function(err, result){
-                    console.log("DEBUG Output: ", result.body);
+                    console.log("DEBUG Output <"+job.name+">: ", result.body);
                 }
             );
 
