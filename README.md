@@ -62,7 +62,7 @@ First time only
 $ npm install
 ```
 
-Run  
+Run (HOST/PORT should match the Fiori Frontend Server, where the launchpad is running)
 ```bash
 $ node index.js --url "https://HOST:PORT"
 ```
