@@ -16,7 +16,7 @@ e.g.
 > Job "01-MYUSER-Customer-analyzeDoubtfulAccountsAllowance"  
 > ...
 
-![Jobs](https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/docs/img/jobs.png)
+<img src="https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/docs/img/jobs.png" alt="drawing" height="200"/>
 
 with the following configuration:
 
