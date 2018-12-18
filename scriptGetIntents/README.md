@@ -9,10 +9,14 @@ e.g.
 > "MYUSER", "MYPASSWORD"
 > ...
 
+![User](https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/docs/img/user.png)
+
 **Output:** "intents_MYUSER.csv", ...    
 e.g.  
 > "MYUSER", "MYPASSWORD", ..., "#Customer-analyzeDoubtfulAccountsAllowance"  
 > ...
+
+![Intents](https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/docs/img/intents.png)
 
 ### Prerequisites
 

@@ -9,10 +9,14 @@ e.g.
 > "MYUSER", "MYPASSWORD", ..., "#Customer-analyzeDoubtfulAccountsAllowance"  
 > ...
 
+![Intents](https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/docs/img/intents.png)
+
 **Output:** Creates preconfigured jobs for SAP Fiori launchpad smoke testing with uiveri5  
 e.g.  
 > Job "01-MYUSER-Customer-analyzeDoubtfulAccountsAllowance"  
 > ...
+
+![Jobs](https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/docs/img/jobs.png)
 
 with the following configuration:
 

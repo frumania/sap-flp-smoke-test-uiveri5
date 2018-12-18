@@ -12,7 +12,7 @@ if(argv.v)
 /****START SETTINGS****/
 var csvFilePath = typeof argv.input !== 'undefined' ? argv.input : '../user.csv';
 var resultsFilePath = typeof argv.output !== 'undefined' ? argv.output : '../results/intents/';
-var flpUrl = typeof argv.url !== 'undefined' ? argv.url : "https://52.201.167.55:8001";
+var flpUrl = typeof argv.url !== 'undefined' ? argv.url : "";
 var suffix = typeof argv.suffix !== 'undefined' ? argv.suffix : "?sap-language=EN&sap-client=000";
 var addShellHome = argv.addShellHome === 'false' ? false : true;
 /****END SETTINGS****/
@@ -29,6 +29,11 @@ csv().fromFile(csvFilePath).then((testset)=>{
 
         logger.log('debug', "["+test.user+"] ## NEW RUN ##");
         logger.log('debug', "["+test.user+"] Fetching Catalogs...");
+
+        if(flpUrl == "")
+        {
+            throw "ERROR: Url must not be empty! Please specify SAP Fiori launchpad Url via parameter '--url https://HOST:PORT'. Script aborted!"
+        }
 
         //PERFORM GET REQUEST
         var url = flpUrl + abapFLP.getSuffix() + suffix.replace(/([?])/g, "&");

@@ -1,12 +1,14 @@
-# SAP Fiori launchpad smoke testing tool based on uiveri5
+# SAP Fiori smoke test tool based on UIVERI5
 
 [![Build Status](https://travis-ci.org/frumania/sap-flp-smoke-test-uiveri5.svg?branch=master)](https://travis-ci.org/frumania/sap-flp-smoke-test-uiveri5)
 
+Test automation tool for the startup of SAPUI5/Fiori Apps inside the SAP Fiori launchpad.
+
 ### Prerequisites
 
-* NodeJS >= 8.X
-* Docker >= 17.x
-* GIT
+* [NodeJS](https://nodejs.org) >= 8.X
+* [Docker](https://docker.com) >= 17.x
+* [GIT](https://git-scm.com/)
 
 ### Quick Guide
 
@@ -98,4 +100,14 @@ Via browser open **http://localhost:8080**
 
 > PW: SAP
 
-**Output Image**
+## Screenshots ##
+
+![DEMO](https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/docs/img/1.png)
+
+![DEMO](https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/docs/img/2.png)
+
+![DEMO](https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/docs/img/3.png)
+
+## License
+
+[![Apache 2](https://img.shields.io/badge/license-Apache%202-blue.svg)](./LICENSE.txt)
