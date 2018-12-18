@@ -6,9 +6,6 @@ Processes csv input file and resolves all SAP Fiori launchpad intents (tile / ta
 
 **Input:** "user.csv"   
 e.g.  
-> "MYUSER", "MYPASSWORD"
-> ...
-
 <img src="https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/docs/img/user.png" alt="drawing" height="100"/>
 
 **Output:** "intents_MYUSER.csv", ...    
@@ -16,7 +13,7 @@ e.g.
 > "MYUSER", "MYPASSWORD", ..., "#Customer-analyzeDoubtfulAccountsAllowance"  
 > ...
 
-<img src="https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/docs/img/jobs.png" alt="drawing" height="100"/>
+<img src="https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/docs/img/intents.png" alt="drawing"/>
 
 ### Prerequisites
 
