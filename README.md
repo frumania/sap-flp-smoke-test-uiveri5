@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/frumania/sap-flp-smoke-test-uiveri5.svg?branch=master)](https://travis-ci.org/frumania/sap-flp-smoke-test-uiveri5)
 
-Test automation tool for the startup of SAPUI5/Fiori Apps inside the SAP Fiori launchpad.
+Test automation tool for the startup of SAPUI5/Fiori Apps inside the SAP Fiori launchpad based on [UIVERI5](https://github.com/SAP/ui5-uiveri5).
 
 ### Prerequisites
 
@@ -24,8 +24,6 @@ You can also follow this [guide](https://help.github.com/articles/cloning-a-repo
 
 #### Step 1) Create / Run Docker Image for Jenkins
 
-[DockerHub Jenkins Preconfigured](https://hub.docker.com/r/frumania/docker-jenkins-preconf/)
-
 First time only
 ```bash
 $ docker run -d -v /var/run/docker.sock:/var/run/docker.sock -v jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 frumania/docker-jenkins-preconf:latest
@@ -36,19 +34,19 @@ Check if container is running
 $ docker ps
 ```
 
-Find out more -> [README.md](https://github.com/frumania/docker-jenkins-preconf/blob/master/README.md)
-
+Find out more:
+* [README.md](https://github.com/frumania/docker-jenkins-preconf/blob/master/README.md)
+* [DockerHub Jenkins Preconfigured](https://hub.docker.com/r/frumania/docker-jenkins-preconf/)
 
 #### Step 2) Prepare Docker Slave Image for Jenkins
-
-[DockerHub Jenkins Uiveri5 Slave](https://hub.docker.com/r/frumania/uiveri5-base/)
 
 ```bash
 $ docker pull frumania/uiveri5-base:latest
 ```
 
-Find out more -> [README.md](https://github.com/frumania/docker-uiveri5-jenkins-slave/blob/master/README.md)
-
+Find out more:
+* [README.md](https://github.com/frumania/docker-uiveri5-jenkins-slave/blob/master/README.md)
+* [DockerHub Jenkins Uiveri5 Slave](https://hub.docker.com/r/frumania/uiveri5-base/)
 
 #### Step 3) Generate Test Set
 
@@ -69,7 +67,8 @@ Run
 $ node index.js --url "https://HOST:PORT"
 ```
 
-Find out more -> [README.md](https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/scriptGetIntents/README.md)
+Find out more:
+* [README.md](https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/scriptGetIntents/README.md)
 
 
 #### Step 4) Create Jenkins Jobs
@@ -89,8 +88,8 @@ Run
 $ node index.js
 ```
 
-Find out more -> [README.md](https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/scriptCreateJenkinsJobs/README.md)
-
+Find out more:
+* [README.md](https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/scriptCreateJenkinsJobs/README.md)
 
 #### Step 5) Access Jenkins via browser
 
