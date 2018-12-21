@@ -12,6 +12,8 @@ Test automation tool for the startup of SAPUI5/Fiori Apps inside the SAP Fiori l
 
 ### Quick Guide
 
+See also [walkthrough video]()!
+
 #### Step 0) Download / Clone Repository
 
 In terminal, create a local copy by executing  
@@ -20,8 +22,8 @@ $ git clone https://github.com/frumania/sap-flp-smoke-test-uiveri5
 ```
 
 You can also follow this [guide](https://help.github.com/articles/cloning-a-repository/).
-
-
+<br>
+<br>
 #### Step 1) Create / Run Docker Image for Jenkins
 
 First time only
@@ -37,7 +39,8 @@ $ docker ps
 Find out more:
 * [README.md](https://github.com/frumania/docker-jenkins-preconf/blob/master/README.md)
 * [DockerHub Jenkins Preconfigured](https://hub.docker.com/r/frumania/docker-jenkins-preconf/)
-
+<br>
+<br>
 #### Step 2) Prepare Docker Slave Image for Jenkins
 
 ```bash
@@ -47,7 +50,8 @@ $ docker pull frumania/uiveri5-base:latest
 Find out more:
 * [README.md](https://github.com/frumania/docker-uiveri5-jenkins-slave/blob/master/README.md)
 * [DockerHub Jenkins Uiveri5 Slave](https://hub.docker.com/r/frumania/uiveri5-base/)
-
+<br>
+<br>
 #### Step 3) Generate Test Set
 
 Maintain file ["user.csv"](https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/user.csv)
@@ -69,8 +73,8 @@ $ node index.js --url "https://HOST:PORT"
 
 Find out more:
 * [README.md](https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/scriptGetIntents/README.md)
-
-
+<br>
+<br>
 #### Step 4) Create Jenkins Jobs
 
 Switch Directory  
@@ -90,7 +94,8 @@ $ node index.js
 
 Find out more:
 * [README.md](https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/scriptCreateJenkinsJobs/README.md)
-
+<br>
+<br>
 #### Step 5) Access Jenkins via browser
 
 Via browser open **http://localhost:8080**
@@ -98,8 +103,9 @@ Via browser open **http://localhost:8080**
 > User: SAP
 
 > PW: SAP
-
-## SUPPORT & CONTRIBUTION ##
+<br>
+<br>
+## Support & Contribution
 
 This project is provided "as-is". There is no guarantee that raised issues will be answered or addressed in future releases.
 

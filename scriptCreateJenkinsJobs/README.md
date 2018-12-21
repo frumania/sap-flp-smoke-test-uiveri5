@@ -78,8 +78,8 @@ Syntax
 $ --<param> <value>
 ```
 just append to the command itself! The **defaults** are shown below!  
-  
-  
+<br>
+<br>
 Specifies source directory for .csv files
 ```bash 
 $ --input "results/intents/"
