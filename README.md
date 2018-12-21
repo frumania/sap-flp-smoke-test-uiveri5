@@ -17,14 +17,16 @@ See also [walkthrough video]()!
 
 ### Step 0) Download / Clone Repository
 
+You can download the repository as .zip file to your disk directly via the menu on the top right.
+
+Alternative (requires GIT)
+
 In terminal, create a local copy by executing  
 ```bash
 $ git clone https://github.com/frumania/sap-flp-smoke-test-uiveri5
 ```
 
-You can also follow this [guide](https://help.github.com/articles/cloning-a-repository/).
-
-As an alternative, you can also download the repository as .zip file to your disk via the menu on the top right.
+See also this [guide](https://help.github.com/articles/cloning-a-repository/).
 <br>
 <br>
 
