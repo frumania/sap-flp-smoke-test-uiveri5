@@ -13,6 +13,8 @@ Test automation tool for the startup of SAPUI5/Fiori Apps inside the SAP Fiori l
 ### Quick Guide
 
 See also [walkthrough video]()!
+<br>
+<br>
 
 #### Step 0) Download / Clone Repository
 
@@ -24,6 +26,7 @@ $ git clone https://github.com/frumania/sap-flp-smoke-test-uiveri5
 You can also follow this [guide](https://help.github.com/articles/cloning-a-repository/).
 <br>
 <br>
+
 #### Step 1) Create / Run Docker Image for Jenkins
 
 First time only
@@ -41,6 +44,7 @@ Find out more:
 * [DockerHub Jenkins Preconfigured](https://hub.docker.com/r/frumania/docker-jenkins-preconf/)
 <br>
 <br>
+
 #### Step 2) Prepare Docker Slave Image for Jenkins
 
 ```bash
@@ -52,6 +56,7 @@ Find out more:
 * [DockerHub Jenkins Uiveri5 Slave](https://hub.docker.com/r/frumania/uiveri5-base/)
 <br>
 <br>
+
 #### Step 3) Generate Test Set
 
 Maintain file ["user.csv"](https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/user.csv)
@@ -75,6 +80,7 @@ Find out more:
 * [README.md](https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/scriptGetIntents/README.md)
 <br>
 <br>
+
 #### Step 4) Create Jenkins Jobs
 
 Switch Directory  
@@ -96,6 +102,7 @@ Find out more:
 * [README.md](https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/scriptCreateJenkinsJobs/README.md)
 <br>
 <br>
+
 #### Step 5) Access Jenkins via browser
 
 Via browser open **http://localhost:8080**
@@ -105,13 +112,14 @@ Via browser open **http://localhost:8080**
 > PW: SAP
 <br>
 <br>
+
 ## Support & Contribution
 
 This project is provided "as-is". There is no guarantee that raised issues will be answered or addressed in future releases.
 
 If you like to contribute, fork the code and/or let me know!
 
-## Screenshots ##
+## Screenshots
 
 ![DEMO](https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/docs/img/1.png)
 
