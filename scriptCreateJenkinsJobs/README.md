@@ -68,14 +68,20 @@ $ node index.js
 
 With Parameters  
 ```bash
-$ node index.js --input "../results/intents/" --jenkinsUrl "localhost:8080" --jenkinsUser "SAP" --jenkinsPassword "SAP" --gitUrl "https://github.com/frumania/sap-flp-smoke-test-uiveri5" --delete false --auth "sapcloud-form" --create false --start true --clear false --v
+$ node index.js --input "results/intents/" --jenkinsUrl "localhost:8080" --jenkinsUser "SAP" --jenkinsPassword "SAP" --gitUrl "https://github.com/frumania/sap-flp-smoke-test-uiveri5" --delete false --auth "sapcloud-form" --create false --start true --clear false --v
 ```
 
 ### Parameters
 
+Syntax
+```bash 
+$ --<param> <default value>
+```
+just append to the command itself
+
 Specifies source directory for .csv files
 ```bash 
-$ --input "../results/intents/"
+$ --input "results/intents/"
 ```
 
 Specifies URL/host+port for jenkins server  
