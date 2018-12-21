@@ -100,6 +100,12 @@ Via browser open **http://localhost:8080**
 
 > PW: SAP
 
+## SUPPORT & CONTRIBUTION ##
+
+This project is provided "as-is". There is no guarantee that raised issues will be answered or addressed in future releases.
+
+If you like to contribute, fork the code and/or let me know!
+
 ## Screenshots ##
 
 ![DEMO](https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/docs/img/1.png)

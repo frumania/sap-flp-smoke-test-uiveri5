@@ -10,8 +10,8 @@ if(argv.v)
 {console.debug(argv);}
 
 /****START SETTINGS****/
-var csvFilePath = typeof argv.input !== 'undefined' ? argv.input : '../user.csv';
-var resultsFilePath = typeof argv.output !== 'undefined' ? argv.output : '../results/intents/';
+var csvFilePath = typeof argv.input !== 'undefined' ? argv.input : 'user.csv';
+var resultsFilePath = typeof argv.output !== 'undefined' ? argv.output : 'results/intents/';
 var flpUrl = typeof argv.url !== 'undefined' ? argv.url : "";
 var suffix = typeof argv.suffix !== 'undefined' ? argv.suffix : "?sap-language=EN&sap-client=000";
 var addShellHome = argv.addShellHome === 'false' ? false : true;
@@ -21,7 +21,13 @@ var testLocal = argv.testLocal === 'true' ? true : false;
 
 if(argv.v){require('request').debug = true;}
 
-csv().fromFile(csvFilePath).then((testset)=>{
+var InputfilePath = path.join(__dirname, '../'+csvFilePath);
+var OutputfilePath = path.join(__dirname, '../'+resultsFilePath);
+
+
+logger.log('info', "Input File '"+InputfilePath+"'");
+
+csv().fromFile(InputfilePath).then((testset)=>{
 
     //console.debug(testset);
     
@@ -38,7 +44,7 @@ csv().fromFile(csvFilePath).then((testset)=>{
         //PERFORM GET REQUEST
         var url = flpUrl + abapFLP.getSuffix() + suffix.replace(/([?])/g, "&");
 
-        logger.log('debug', "["+test.user+"] "+url);
+        logger.log('info', "["+test.user+"] "+url);
 
         var options = {
             'auth': {
@@ -67,7 +73,7 @@ csv().fromFile(csvFilePath).then((testset)=>{
 
                     if(argv.v)
                     {
-                        const file = resultsFilePath+'/catalogservice_'+test.user+'.json';
+                        const file = OutputfilePath+'/catalogservice_'+test.user+'.json';
                         fs.writeFile(file, body, function(err) {
                             if(err) {
                                 return console.log(err);
@@ -120,7 +126,7 @@ csv().fromFile(csvFilePath).then((testset)=>{
                 {
                     //START GENERATE CSV
                     const Json2csvParser = require('json2csv').Parser;
-                    const file = resultsFilePath+'/intents_'+test.user+'.csv';
+                    const file = OutputfilePath+'intents_'+test.user+'.csv';
                     try 
                     {
                         const parser = new Json2csvParser({ flatten: true, unwind: 'tile' });
@@ -131,7 +137,7 @@ csv().fromFile(csvFilePath).then((testset)=>{
                                     details: error
                                 })
                             }
-                            logger.log('debug', '['+test.user+'] File <'+file+'> written');
+                            logger.log('info', '['+test.user+'] File <'+file+'> written');
                         });
                     } catch (error) {
                         logger.log('error', '['+test.user+'] File <'+file+'> could not be written!', {

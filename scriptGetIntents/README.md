@@ -45,7 +45,7 @@ $ node index.js --url "https://52.201.167.55:8001"
 
 With parameters  
 ```bash
-$ node index.js --url "https://52.201.167.55:8001" --suffix "?sap-language=EN&sap-client=000" --input "../user.csv" --output "../results/intents/" --addShellHome true --v
+$ node index.js --url "https://52.201.167.55:8001" --suffix "?sap-language=EN&sap-client=000" --input "user.csv" --output "results/intents/" --addShellHome true --v
 ```
 
 ### Logging
@@ -68,12 +68,12 @@ $ --suffix "?sap-language=EN&sap-client=000"
 
 Specifies source directory for .csv user file
 ```bash
-$ --input "../user.csv"
+$ --input "user.csv"
 ```
 
 Specifies target directory for generated intents*.csv files
 ```bash
-$ --output "../results/intents/"
+$ --output "results/intents/"
 ```
 
 Creates additional "#Shell-home" intent, which can be used to test the SAP Fiori launchpad dashboard (dynamic tiles)

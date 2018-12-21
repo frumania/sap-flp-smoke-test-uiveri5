@@ -68,7 +68,7 @@ $ node index.js
 
 With Parameters  
 ```bash
-$ node index.js --input "../results/intents/" --jenkinsUrl "localhost:8080" --jenkinsUser "SAP" --jenkinsPassword "SAP" --gitUrl "https://github.com/frumania/sap-flp-smoke-test-uiveri5" --delete false --auth "sapcloud-form" --create false --start true --v
+$ node index.js --input "../results/intents/" --jenkinsUrl "localhost:8080" --jenkinsUser "SAP" --jenkinsPassword "SAP" --gitUrl "https://github.com/frumania/sap-flp-smoke-test-uiveri5" --delete false --auth "sapcloud-form" --create false --start true --clear false --v
 ```
 
 ### Parameters
@@ -103,9 +103,14 @@ Create Jobs
 $ --create true
 ```
 
-Delete/Purge Jobs   
+Delete/Purge Jobs By Name
 ```bash 
 $ --delete true
+```
+
+Delete/Purge All Jobs   
+```bash 
+$ --clear false
 ```
 
 Specifies GIT source repository URL for uiveri5 smoke tests  

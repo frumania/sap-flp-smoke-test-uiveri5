@@ -11,6 +11,7 @@ var directoryPath = typeof argv.input !== 'undefined' ? argv.input : 'results/in
 var forcestart = argv.start === 'true' ? true : false;
 var forcecreate = argv.create === 'false' ? false : true;
 var forcedelete = argv.delete === 'false' ? false : true;
+var forcedeleteAll = argv.clear === 'true' ? true : false;
 var jenkins_user = typeof argv.jenkinsUser !== 'undefined' ? argv.jenkinsUser : "SAP";
 var jenkins_password = typeof argv.jenkinsPassword !== 'undefined' ? argv.jenkinsPassword : "SAP";
 var gitUrl = typeof argv.gitUrl !== 'undefined' ? argv.gitUrl : "https://github.com/frumania/sap-flp-smoke-test-uiveri5"; //"https://github.wdf.sap.corp/D055675/uiveri5-utils";
@@ -23,6 +24,7 @@ console.log("Input: "+directoryPath+"*.csv");
 console.log("Start: "+forcestart);
 console.log("Create: "+forcecreate);
 console.log("Delete: "+forcedelete);
+console.log("Clear: "+forcedeleteAll);
 console.log("GitUrl: "+gitUrl);
 console.log("JenkinsUrl: "+baseUrl);
 console.log("AuthType: "+authType);
@@ -212,9 +214,13 @@ var JenkinsJob = function()
                 jenkins.job.create(jobname, xmljobcontents, function(err) {
                     if (err)
                     {
-                        console.warn("WARN Job "+jobname+" could not be created!");
-                        console.log(xmljobcontents);
-                        console.log(err);
+                        console.warn("WARN Job "+jobname+" could not be created! Job already exists?");
+
+                        if(argv.v)
+                        {
+                            console.log(xmljobcontents);
+                            console.log(err);
+                        }
                     }
                     else
                     {
@@ -263,6 +269,8 @@ var JenkinsJob = function()
         return new Promise(function(resolve, reject) {
             if(forcecreate)
             {
+                console.log("INFO Creating Nested and Dashboard Views...");
+                
                 jenkins.view.create(viewname, 'hudson.plugins.nested_view.NestedView', function(err) {
                     if (err)
                     {console.warn("WARN View "+viewname+" could not be created!");}
@@ -301,7 +309,7 @@ var JenkinsJob = function()
     this.viewDelete = function(viewname)
     {
         return new Promise(function(resolve, reject) {
-            if(forcedelete)
+            if(forcedelete || forcedeleteAll)
             {
                 jenkins.view.destroy(viewname, function(err) {
                     if (err)
@@ -309,6 +317,53 @@ var JenkinsJob = function()
                     else
                     {console.log("INFO View "+viewname+" successfully deleted!");}
                     resolve("Stuff worked!");
+                });
+            }
+            else
+            {
+                resolve("Stuff worked!");
+            }
+        });
+    };
+
+    this.clear = function()
+    {
+        return new Promise(function(resolve, reject) {
+            if(forcedeleteAll)
+            {
+                jenkins.job.list(function(err, data) 
+                {
+                    if(err) throw err;
+                    
+                    //if(argv.v){console.debug('jobs', data);}
+
+                    var mypromises = [];
+
+                    console.log("INFO Start removing all jobs...");
+
+                    for (let index = 0; index < data.length; index++) {
+                        const job = data[index];
+                        
+                        var mypromise = new Promise(function(resolveme, reject) {
+                            jenkins.job.destroy(job.name, function(err) {
+                                if (err)
+                                {
+                                    console.warn("WARN Job "+jobname+" could not be deleted!");
+                                }
+
+                                console.log('INFO Job deleted: ', job.name);
+
+                                resolveme("Stuff worked!");
+                            });
+                        });
+                        mypromises.push(mypromise);
+                    }
+
+                    Promise.all(mypromises).then(function(values) {
+                        console.log("INFO All Jobs successfully removed!");
+                        resolve("Stuff worked!");
+                    });
+                
                 });
             }
             else
@@ -333,7 +388,6 @@ var JenkinsJob = function()
         var xmlnestedcontentsraw = xmlnested.slice(0);
         var xmlnestedcontents = xmlnestedcontentsraw.replace("###VIEWS###", this.xml_concat);
 
-        console.log("INFO Creating Nested and Dashboard Views...");
         //console.debug(xmlnestedcontents);
 
         that.viewDelete(viewname).then(function()
@@ -354,6 +408,9 @@ var JenkinsJob = function()
 }
 
 var myjenkinsjob = new JenkinsJob();
-myjenkinsjob.start();
+
+myjenkinsjob.clear().then(function(){
+    myjenkinsjob.start();
+});
 
 module.exports = new JenkinsJob();

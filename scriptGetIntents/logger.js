@@ -27,8 +27,12 @@ const logger = createLogger({
 
 function clearLogs()
 {
-  fs.unlinkSync(errorlog);
-  fs.unlinkSync(combinedlog);
+  try {
+    fs.unlinkSync(errorlog);
+    fs.unlinkSync(combinedlog);
+  } catch (error) {
+    
+  }
 }
 
 function getLogHandler()
