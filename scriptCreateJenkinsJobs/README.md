@@ -75,10 +75,11 @@ $ node index.js --input "results/intents/" --jenkinsUrl "localhost:8080" --jenki
 
 Syntax
 ```bash 
-$ --<param> <default value>
+$ --<param> <value>
 ```
-just append to the command itself
-
+just append to the command itself! The **defaults** are shown below!  
+  
+  
 Specifies source directory for .csv files
 ```bash 
 $ --input "results/intents/"

@@ -53,6 +53,13 @@ $ node index.js --url "https://52.201.167.55:8001" --suffix "?sap-language=EN&sa
 
 ### Parameters
 
+Syntax
+```bash 
+$ --<param> <value>
+```
+just append to the command itself! The **defaults** are shown below!  
+  
+  
 Specifies SAP system url/host
 ```bash
 $ --url "https://HOST:PORT"
