@@ -32,7 +32,7 @@ See also this [guide](https://help.github.com/articles/cloning-a-repository/).
 
 ### Step 1) Create / Run Docker Image for Jenkins
 
-First time only
+**Once** only
 ```bash
 $ docker run -d -v /var/run/docker.sock:/var/run/docker.sock -v jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 frumania/docker-jenkins-preconf:latest
 ```
@@ -69,7 +69,7 @@ Switch Directory
 $ cd scriptGetIntents
 ```
 
-First time only  
+**Once** only 
 ```bash
 $ npm install
 ```
@@ -91,7 +91,7 @@ Switch Directory
 $ cd scriptCreateJenkinsJobs
 ```
 
-First time only
+**Once** only
 ```bash
 $ npm install
 ```
