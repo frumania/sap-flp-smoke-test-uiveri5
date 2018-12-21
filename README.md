@@ -4,7 +4,7 @@
 
 Test automation tool for the startup of SAPUI5/Fiori Apps inside the SAP Fiori launchpad based on [UIVERI5](https://github.com/SAP/ui5-uiveri5).
 
-Successor of [OPA5 smoke test tool](https://github.com/frumania/sap-flp-smoke-test-opa5), that allows easy mass scheduling and reporting.
+Successor of [OPA5 smoke test tool](https://github.com/frumania/sap-flp-smoke-test-opa5), now allows easy mass scheduling and reporting.
 
 ### Prerequisites
 
