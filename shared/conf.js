@@ -8,8 +8,6 @@ exports.config = {
 	pluginConsoleErrors: {
 		filePath: 'results/reports/',
 		fileName: 'error.json',
-		failOnWarning: false,
-    failOnError: true,
     exclude: ["i18n", "Content Security Policy", "no valid cache key", "Cached changes", "cache data not available", "Support rule with the id", "Support Assistant", ".support.js", "sap.ushell.services.Notifications", "Notification"],
 		strictMode: true,
 		enable: true

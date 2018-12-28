@@ -2,7 +2,7 @@
 
 ### Purpose
 
-Script maintains jenkins jobs for a given url, intent, user and password combination each, so that predefined uiveri5 smoke tests can be scheduled and executed. Logs/Results are being collected.
+Script maintains jenkins jobs for a given url, intent, user and password combination each, so that predefined [UIVeri5](https://github.com/SAP/ui5-uiveri5) smoke tests can be scheduled and executed. Logs/Results are being collected.
 
 **Input:** "intents*.csv"  
 e.g.  
@@ -11,7 +11,7 @@ e.g.
 
 <img src="https://github.com/frumania/sap-flp-smoke-test-uiveri5/blob/master/docs/img/intents.png" alt="drawing"/>
 
-**Output:** Creates preconfigured jobs for SAP Fiori launchpad smoke testing with uiveri5  
+**Output:** Creates preconfigured jobs for SAP Fiori launchpad smoke testing with UIVeri5  
 e.g.  
 > Job "01-MYUSER-Customer-analyzeDoubtfulAccountsAllowance"  
 > ...
@@ -23,7 +23,7 @@ with the following configuration:
 GIT Repository: 
 > https://github.com/frumania/sap-flp-smoke-test-uiveri5
 
-Label: (-> triggers Docker Cloud Controller [uiveri5 slave](https://hub.docker.com/r/frumania/uiveri5-base/))
+Label: (-> triggers Docker Cloud Controller [UIVeri5 Slave](https://hub.docker.com/r/frumania/uiveri5-base/))
 > myslave
 
 Shell Commands:
@@ -39,9 +39,9 @@ $ visualtest --seleniumAddress http://localhost:4444/wd/hub --config '{"auth":{"
 
 Further:  
 * Job: Clears Workspace
-* Job: Collects uiveri5 HTML Report
-* Job: Collects uiveri5 Console Error Plugin Output (error.json)
-* Job: Collects uiveri5 Logger Plugin Output (pluginLoader.thml)
+* Job: Collects UIVeri5 HTML Report
+* Job: Collects UIVeri5 Console Error Plugin Output (error.json)
+* Job: Collects UIVeri5 Logger Plugin Output (pluginLoader.thml)
 * Creates Nested & Dashbaord View
 
 ### Prerequisites
@@ -120,7 +120,7 @@ Delete/Purge All Jobs
 $ --clear false
 ```
 
-Specifies GIT source repository URL for uiveri5 smoke tests  
+Specifies GIT source repository URL for UIVeri5 smoke tests  
 ```bash 
 $ --gitUrl "https://github.com/frumania/sap-flp-smoke-test-uiveri5"
 ```

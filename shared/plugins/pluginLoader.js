@@ -26,11 +26,18 @@ var pluginLoader = function()
 		return plugin;
 	};
 
+	this.enabled = function(){
+		var enabled = false;
+		if(typeof this.config.pluginLoader !== 'undefined' && this.config.pluginLoader.enable)
+		{
+			enabled = this.config.pluginLoader.enable || false;
+		}
+		return enabled;
+	};
+
 	this.createReproduceHTML = function()
 	{
-		var enabled = this.config.pluginLoader.enable || false;
-
-        if(enabled)
+        if(this.enabled())
         {
 			var filePath = this.config.pluginLoader.filePath || defaultFilePath;
 			var fileName = this.config.pluginLoader.fileName || defaultFileName;
@@ -50,11 +57,15 @@ var pluginLoader = function()
 
 			this.logger.WriteLogFile(filePath, fileName, htmlcontents);
 		}
+		else
+        {
+            this.logger.warn(prefix+'ReproduceHTML not enabled!');
+		}
 	};
 
 	this.logger = logger;
 	this.config = config;
-	this.logger.info(prefix+'initialized...');
+	this.logger.info(prefix+'Initialized!');
 	this.createReproduceHTML();
 };
 

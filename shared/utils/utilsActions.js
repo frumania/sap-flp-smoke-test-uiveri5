@@ -30,7 +30,7 @@ var pluginActions = function()
 		if(intent && intent != "")
 		{
 			browser.executeScript(this._navigate, intent).then(function () {
-				console.log("Navigate to "+intent);
+				console.log("INFO: Navigate to "+intent);
 			});
 		}
 		else

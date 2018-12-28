@@ -1,8 +1,8 @@
-# SAP Fiori smoke test tool based on UIVERI5
+# SAP Fiori smoke test tool based on UIVeri5
 
 [![Build Status](https://travis-ci.org/frumania/sap-flp-smoke-test-uiveri5.svg?branch=master)](https://travis-ci.org/frumania/sap-flp-smoke-test-uiveri5)
 
-Test automation tool for the startup of SAPUI5/Fiori Apps inside the SAP Fiori launchpad based on [UIVERI5](https://github.com/SAP/ui5-uiveri5).
+Test automation tool for the startup of SAPUI5/Fiori Apps inside the SAP Fiori launchpad based on [UIVeri5](https://github.com/SAP/ui5-uiveri5).
 
 ### Prerequisites
 
@@ -54,7 +54,7 @@ $ docker pull frumania/uiveri5-base:latest
 
 Find out more:
 * [README.md](https://github.com/frumania/docker-uiveri5-jenkins-slave/blob/master/README.md)
-* [DockerHub Jenkins Uiveri5 Slave](https://hub.docker.com/r/frumania/uiveri5-base/)
+* [DockerHub Jenkins UIVeri5 Slave](https://hub.docker.com/r/frumania/uiveri5-base/)
 <br>
 <br>
 

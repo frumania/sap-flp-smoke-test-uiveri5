@@ -17,7 +17,7 @@ ConsoleLogger.prototype.WriteLogFile = function(filePath, fileName, contents)
 
     filePath = path.join(__dirname, '../'+filePath);
 
-    that.info('Trying to write file <'+filePath+fileName+'>...');
+    that.debug('Trying to write file <'+filePath+fileName+'>...');
 
     //CREATE DIRECTORY IF NOT EXISTS
     that.mkDirByPathSync(filePath);

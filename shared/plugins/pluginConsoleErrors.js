@@ -107,28 +107,37 @@ var pluginConsoleErrors = function()
 		this.getBrowserLog();
 	};
 
+	this.enabled = function(){
+		var enabled = false;
+		if(typeof this.config.pluginConsoleErrors !== 'undefined' && this.config.pluginConsoleErrors.enable)
+		{
+			enabled = this.config.pluginConsoleErrors.enable || false;
+		}
+		return enabled;
+	};
+
 	this.start = function(clear) {
 
-		var enabled = this.config.pluginConsoleErrors.enable || false;
-
-        if(enabled)
+        if(this.enabled())
 		{
 			if(clear || typeof clear == "undefined")
 			{
-				this.logger.info(prefix+"Clear Browser Console");
+				this.logger.info(prefix+"Clearing Browser Console!");
 				this._clearConsole();
 			}
+		}
+		else
+		{
+			this.logger.warn(prefix+'Not enabled!');
 		}
 	};
 
 	this.end = function() 
 	{
-		var enabled = this.config.pluginConsoleErrors.enable || false;
-
-        if(enabled)
+        if(this.enabled())
 		{
 			//browser.sleep(5000);
-			this.logger.info(prefix+"Check Browser Console for errors...");
+			this.logger.info(prefix+"Checking Browser Console for errors!");
 			this._getLogs();
 		}
 	};
