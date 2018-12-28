@@ -13,7 +13,7 @@ Successor of [OPA5 smoke test tool](https://github.com/frumania/sap-flp-smoke-te
 
 ### Quick Guide
 
-See also [walkthrough video]()!
+See also [walkthrough video](https://sapvideoa35699dc5.hana.ondemand.com/?entry_id=1_qbdcmkyz)!
 <br>
 <br>
 
