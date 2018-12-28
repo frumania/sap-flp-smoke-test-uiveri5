@@ -4,6 +4,8 @@
 
 Test automation tool for the startup of SAPUI5/Fiori Apps inside the SAP Fiori launchpad based on [UIVeri5](https://github.com/SAP/ui5-uiveri5).
 
+Successor of [OPA5 smoke test tool](https://github.com/frumania/sap-flp-smoke-test-opa5), now allows easy mass scheduling and reporting.
+
 ### Prerequisites
 
 * [NodeJS](https://nodejs.org) >= 8.X
@@ -11,26 +13,28 @@ Test automation tool for the startup of SAPUI5/Fiori Apps inside the SAP Fiori l
 
 ### Quick Guide
 
-See also [walkthrough video]()!
+See also [walkthrough video](https://sapvideoa35699dc5.hana.ondemand.com/?entry_id=1_qbdcmkyz)!
 <br>
 <br>
 
 ### Step 0) Download / Clone Repository
+
+You can download the repository as .zip file to your disk directly via the menu on the top right.
+
+Alternative (requires GIT)
 
 In terminal, create a local copy by executing  
 ```bash
 $ git clone https://github.com/frumania/sap-flp-smoke-test-uiveri5
 ```
 
-You can also follow this [guide](https://help.github.com/articles/cloning-a-repository/).
-
-As an alternative, you can also download the repository as .zip file to your disk via the menu on the top right.
+See also this [guide](https://help.github.com/articles/cloning-a-repository/).
 <br>
 <br>
 
 ### Step 1) Create / Run Docker Image for Jenkins
 
-First time only
+**Once** only
 ```bash
 $ docker run -d -v /var/run/docker.sock:/var/run/docker.sock -v jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 frumania/docker-jenkins-preconf:latest
 ```
@@ -67,7 +71,7 @@ Switch Directory
 $ cd scriptGetIntents
 ```
 
-First time only  
+**Once** only 
 ```bash
 $ npm install
 ```
@@ -89,7 +93,7 @@ Switch Directory
 $ cd scriptCreateJenkinsJobs
 ```
 
-First time only
+**Once** only
 ```bash
 $ npm install
 ```
