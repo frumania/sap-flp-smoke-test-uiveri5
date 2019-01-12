@@ -34,7 +34,7 @@ $/opt/selenium/startSeleniumServer.sh;
 $ cd shared;  
 ```
 ```bash
-$ visualtest --seleniumAddress http://localhost:4444/wd/hub --config '{"auth":{"sapcloud-form":{"user":"MYUSER","pass":"MYPASSWORD"}},"baseUrl":"https://...","intent":"#Customer-analyzeDoubtfulAccountsAllowance","specs":"specs/app.spec.js"}'
+$ uiveri5 --seleniumAddress http://localhost:4444/wd/hub --config '{"auth":{"sapcloud-form":{"user":"MYUSER","pass":"MYPASSWORD"}},"baseUrl":"https://...","intent":"#Customer-analyzeDoubtfulAccountsAllowance","specs":"specs/app.spec.js"}'
 ```
 
 Further:  

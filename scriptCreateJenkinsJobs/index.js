@@ -33,7 +33,7 @@ console.log("AuthType: "+authType);
 var jenkins = require('jenkins')({ baseUrl: baseUrl, crumbIssuer: true });
 
 var viewname = 'ALL_USERS';
-var commandprefix = "/opt/selenium/startSeleniumServer.sh; cd shared; visualtest --seleniumAddress http://localhost:4444/wd/hub"; // --v";
+var commandprefix = "/opt/selenium/startSeleniumServer.sh; cd shared; uiveri5 --seleniumAddress http://localhost:4444/wd/hub"; // --v";
 
 var xmljob = fs.readFileSync('job.xml').toString();
 var xmlnested = fs.readFileSync('view_nested.xml').toString();

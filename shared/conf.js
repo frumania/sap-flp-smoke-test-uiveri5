@@ -22,7 +22,7 @@ exports.config = {
 			'*': {
 				acceptInsecureCerts: true,
 				remoteWebDriverOptions: {
-					maximized: false,
+					maximized: true,
 					browserSize: {
 						width: 1024,
 						height: 768
