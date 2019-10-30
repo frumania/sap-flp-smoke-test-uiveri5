@@ -1,5 +1,12 @@
 var meAreaHeaderButton = element(by.id('meAreaHeaderButton'));
-var signOut = element(by.id('logoutBtn'));
+
+var popOver = element(by.id('sapUshellMeAreaPopover'));
+var signOut = element(by.control({
+  controlType: "sap.m.StandardListItem",
+  properties: [{
+    title: "Sign Out"
+  }]
+}));
 var okBtn = element(by.id('__mbox-btn-0'));
 
 var jQuery; //AVOID ESLINT ERRORS
@@ -56,7 +63,11 @@ var pluginActions = function()
 	 * logout
 	 */
 	this.logout = function(){
-		meAreaHeaderButton.click();
+
+		expect(meAreaHeaderButton.isPresent()).toBeTruthy();
+    		meAreaHeaderButton.click();
+    		expect(popOver.isPresent()).toBeTruthy();	  
+		
 		signOut.click();
 		okBtn.click();
 		browser.sleep(2000); //need to wait for logout to actually happen in background
